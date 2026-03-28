@@ -2,6 +2,8 @@
 
 A single-file, zero-dependency progressive web app for heavy bag training. Built as a fully offline, installable HTML file — no server, no framework, no build step.
 
+[Try it yourself](https://sernaleon.github.io/bag-timer/)
+
 ---
 
 ## Features
