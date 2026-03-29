@@ -793,15 +793,16 @@
     // 5=UCUT(L) 6=UCUT(R) 7=OVER(L) 8=OVER(R)
     const COMBO_TRANSITIONS = {
       //        [  1,   2,   3,   4,   5,   6,   7,   8 ]
-      0: [50, 20, 12,  6,  6,  3,  2,  1], // start: jab favoured
-      1: [ 5, 45, 14,  5, 16,  8,  5,  2], // after JAB:   cross most, then L-side
-      2: [ 8,  4, 34,  8, 26,  9,  7,  4], // after CROSS: L-hook or L-ucut
-      3: [ 5, 35,  4, 20,  5, 22,  3,  6], // after L-HOOK: cross or R-hook
-      4: [20,  8, 30,  4, 25,  5,  5,  3], // after R-HOOK: jab or L-hook
-      5: [ 5, 30,  5, 20,  4, 26,  3,  7], // after L-UCUT: cross or R-hook/ucut
-      6: [10,  5, 28,  5, 28,  4, 15,  5], // after R-UCUT: L-hook or L-ucut/over
-      7: [ 5, 30,  5, 25,  5, 22,  3,  5], // after L-OVER: cross or R-hook/ucut
-      8: [25,  5, 30,  5, 22,  5,  5,  3], // after R-OVER: jab or L-hook/ucut
+      // target: 1-4 ~20% each · 5-6 ~5% each · 7-8 ~10% each
+      0: [48, 16, 14, 14,  2,  2,  3,  1], // start: jab dominant
+      1: [ 5, 34, 18, 18,  7,  4, 10,  4], // after JAB
+      2: [ 8,  4, 33, 20,  6,  4, 14, 11], // after CROSS
+      3: [ 5, 28,  4, 30,  3,  7,  5, 18], // after L-HOOK
+      4: [20,  7, 30,  4,  7,  4, 20,  8], // after R-HOOK
+      5: [ 5, 22,  5, 26,  2,  7,  8, 25], // after L-UPPER
+      6: [ 9,  5, 27,  8,  6,  2, 26,  7], // after R-UPPER
+      7: [ 5, 26,  6, 34,  3,  6,  2, 18], // after L-OVER
+      8: [24,  5, 30,  8,  5,  4, 21,  3], // after R-OVER
     };
     const COMBO_LENGTHS = [2,3,3,3,4,4,4,4,4,5,5,5,5,6,6,7,8];
 
@@ -1259,7 +1260,7 @@
         }
       },
 
-      // ── Wake Lock - Keeps display on ─────────────────────────────────────
+      // ── Wake Lock ─────────────────────────────────────
       WakeLock: {
         async request() {
           if(!("wakeLock" in navigator)||this.wakeLock) return;
